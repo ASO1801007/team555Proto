@@ -15,9 +15,23 @@ class Attendances extends Migration
     {
         Schema::create('attendances', function (Blueprint $table) {
             /* 属性達の定義 */
-            $table->bigIncrements('id',20);
-            $table->string('name');
+            $table->increments('id');
+            $table->boolean('attendFlag');
+            $table->integer('user_id')->unsigned();
+            $table->integer('lesson_id')->unsigned();
             $table->timestamps();
+
+            /* ユーザー(auth)機能と結合するもの
+
+            $table->foreign('user_id')
+            ->references('id')->on('users')
+            ->onDelete('cascade');
+
+            */
+
+            $table->foreign('lesson_id')
+            ->references('id')->on('lessons')
+            ->onDelete('cascade');
         });
     }
 

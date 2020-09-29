@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Timetypes extends Migration
+class Languages extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class Timetypes extends Migration
      */
     public function up()
     {
-        Schema::create('timetypes', function (Blueprint $table) {
+        Schema::create('languages', function (Blueprint $table) {
             /* 属性達の定義 */
-            $table->bigIncrements('id',20);
-            $table->string('name',20);
-            $table->time('startTime');
-            $table->time('endTime');
+            $table->increments('id');
+            $table->string('name',50);
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class Timetypes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('timetypes');
+        Schema::dropIfExists('languages');
     }
 }

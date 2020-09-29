@@ -15,9 +15,22 @@ class Messages extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             /* 属性達の定義 */
-            $table->bigIncrements('id',20);
-            $table->string('name');
+            $table->increments('id');
+            $table->string('intro',255);
+            $table->integer('user_id')->unsigned();
+            $table->integer('group_id')->unsigned();
             $table->timestamps();
+
+            /* ユーザー(auth)機能と結合するもの
+
+            $table->foreign('user_id')
+            ->references('id')->on('users')
+            ->onDelete('cascade');
+
+            */
+
+            $table->foreign('group_id')->references('id')->on('groups');
+
         });
     }
 
