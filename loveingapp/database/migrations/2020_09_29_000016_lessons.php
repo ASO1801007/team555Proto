@@ -16,6 +16,7 @@ class Lessons extends Migration
         Schema::create('lessons', function (Blueprint $table) {
             /* 属性達の定義 */
             $table->increments('id');
+            $table->date('attendDate');
             $table->string('intro',255);
             $table->integer('user_id')->unsigned();
             $table->integer('language_id')->unsigned();

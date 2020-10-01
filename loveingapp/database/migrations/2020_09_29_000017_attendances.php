@@ -16,7 +16,6 @@ class Attendances extends Migration
         Schema::create('attendances', function (Blueprint $table) {
             /* 属性達の定義 */
             $table->increments('id');
-            $table->date('attendDate');
             $table->boolean('attendFlag');
             $table->integer('user_id')->unsigned();
             $table->integer('lesson_id')->unsigned();
